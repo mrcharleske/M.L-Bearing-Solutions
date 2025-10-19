@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.L Bearing Solutions - Africa's Premier Bearing Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .modal {
+            backdrop-filter: blur(5px);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .category-card {
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .toast {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Logo Placeholder -->
+                        <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-xl">ML</span>
+                        </div>
+                        <div>
+                            <span class="text-xl font-bold text-gray-800">M.L Bearing Solutions</span>
+                            <p class="text-xs text-gray-600">Africa's Premier Bearing Company</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-lg mx-8">
+                    <div class="relative w-full">
+                        <input type="text" id="search-input" placeholder="Search bearings..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- User Account -->
+                    <button id="account-btn" class="text-gray-700 hover:text-blue-600 flex items-center">
+                        <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <span class="hidden md:block">Account</span>
+                    </button>
+                    
+                    <!-- Favorites -->
+                    <button id="favorites-btn" class="text-gray-700 hover:text-blue-600 relative">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                        <span id="favorites-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                    
+                    <!-- Cart -->
+                    <button id="cart-btn" class="text-gray-700 hover:text-blue-600 relative">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 11-4 0v-6m4 0V9a2 2 0 10-4 0v4.01"></path>
+                        </svg>
+                        <span id="cart-count" class="cart-badge absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Secondary Navigation -->
+        <div class="bg-gray-50 border-t">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-12">
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Home</a>
+                        <a href="#products" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Products</a>
+                        <a href="#import" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Import Request</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">About</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Contact</a>
+                    </div>
+                    <div class="flex items-center space-x-4 text-sm text-gray-600">
+                        <span>📍 Nairobi, Kenya | Nationwide Delivery</span>
+                        <span>📞 +254 721 881995</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#products" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Products</a>
+                <a href="#import" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Import Request</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-blue-600">About</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white pt-28 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Africa's Premier Bearing Solutions
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Leading Kenya and East Africa with premium industrial bearings, expert services, and nationwide delivery. Import on request for specialized needs.
+                </p>
+                <div class="space-x-4">
+                    <a href="#products" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        Shop Now
+                    </a>
+                    <a href="#import" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                        Import Request
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-blue-600">500+</div>
+                    <div class="text-gray-600">Products Available</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-blue-600">1000+</div>
+                    <div class="text-gray-600">Happy Customers</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-blue-600">24/7</div>
+                    <div class="text-gray-600">Customer Support</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-blue-600">47</div>
+                    <div class="text-gray-600">Counties Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Shop by Category</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive range of premium bearings for all industrial applications
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer" onclick="filterProducts('ball-bearings')">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500">[Ball Bearing Category Image]</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Ball Bearings</h3>
+                        <p class="text-gray-600 mb-4">High-precision ball bearings for various industrial applications</p>
+                        <span class="text-blue-600 font-semibold">View Products →</span>
+                    </div>
+                </div>
+                
+                <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer" onclick="filterProducts('roller-bearings')">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500">[Roller Bearing Category Image]</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Roller Bearings</h3>
+                        <p class="text-gray-600 mb-4">Heavy-duty roller bearings for high radial loads</p>
+                        <span class="text-blue-600 font-semibold">View Products →</span>
+                    </div>
+                </div>
+                
+                <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer" onclick="filterProducts('thrust-bearings')">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500">[Thrust Bearing Category Image]</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Thrust Bearings</h3>
+                        <p class="text-gray-600 mb-4">Specialized bearings for axial load applications</p>
+                        <span class="text-blue-600 font-semibold">View Products →</span>
+                    </div>
+                </div>
+                
+                <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer" onclick="filterProducts('needle-bearings')">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500">[Needle Bearing Category Image]</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Needle Bearings</h3>
+                        <p class="text-gray-600 mb-4">Compact bearings for space-constrained applications</p>
+                        <span class="text-blue-600 font-semibold">View Products →</span>
+                    </div>
+                </div>
+                
+                <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer" onclick="filterProducts('spherical-bearings')">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500">[Spherical Bearing Category Image]</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Spherical Bearings</h3>
+                        <p class="text-gray-600 mb-4">Self-aligning bearings for misalignment tolerance</p>
+                        <span class="text-blue-600 font-semibold">View Products →</span>
+                    </div>
+                </div>
+                
+                <div class="category-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer" onclick="filterProducts('custom-solutions')">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500">[Custom Solutions Image]</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Custom Solutions</h3>
+                        <p class="text-gray-600 mb-4">Tailored bearing solutions for specific requirements</p>
+                        <span class="text-blue-600 font-semibold">View Products →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-16">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Products</h2>
+                    <p class="text-xl text-gray-600">Premium bearings trusted by industries across Africa</p>
+                </div>
+                <div class="flex space-x-4">
+                    <select id="category-filter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="all">All Categories</option>
+                        <option value="ball-bearings">Ball Bearings</option>
+                        <option value="roller-bearings">Roller Bearings</option>
+                        <option value="thrust-bearings">Thrust Bearings</option>
+                        <option value="needle-bearings">Needle Bearings</option>
+                        <option value="spherical-bearings">Spherical Bearings</option>
+                    </select>
+                    <select id="sort-filter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                    Load More Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Import Request Section -->
+    <section id="import" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Import Request Service</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Can't find what you need? We import specialized bearings on request from trusted global manufacturers.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <form id="import-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="import-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="import-name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="import-company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                            <input type="text" id="import-company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="import-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="import-email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="import-phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="import-phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="bearing-type" class="block text-sm font-medium text-gray-700 mb-2">Bearing Type</label>
+                        <input type="text" id="bearing-type" name="bearingType" required placeholder="e.g., Deep groove ball bearing, Cylindrical roller bearing" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="bearing-size" class="block text-sm font-medium text-gray-700 mb-2">Size/Dimensions</label>
+                            <input type="text" id="bearing-size" name="size" required placeholder="e.g., 6205, 30x62x16" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="bearing-quantity" class="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
+                            <input type="number" id="bearing-quantity" name="quantity" required min="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="bearing-brand" class="block text-sm font-medium text-gray-700 mb-2">Preferred Brand (Optional)</label>
+                            <input type="text" id="bearing-brand" name="brand" placeholder="e.g., SKF, FAG, NSK" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="application" class="block text-sm font-medium text-gray-700 mb-2">Application/Use Case</label>
+                        <textarea id="application" name="application" rows="3" required placeholder="Describe where and how the bearing will be used" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="timeline" class="block text-sm font-medium text-gray-700 mb-2">Required Timeline</label>
+                        <select id="timeline" name="timeline" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Select timeline</option>
+                            <option value="urgent">Urgent (1-2 weeks)</option>
+                            <option value="standard">Standard (3-4 weeks)</option>
+                            <option value="flexible">Flexible (1-2 months)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="additional-info" class="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
+                        <textarea id="additional-info" name="additionalInfo" rows="3" placeholder="Any additional specifications, requirements, or questions" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        Submit Import Request
+                    </button>
+                </form>
+                
+                <div id="import-message" class="mt-4 p-4 rounded-lg hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About M.L Bearing Solutions</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Leading Africa's industrial revolution with premium bearing solutions and unmatched expertise
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Why Choose M.L Bearing Solutions?</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-white text-sm">🏆</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Africa's Leading Supplier</h4>
+                                <p class="text-gray-600">Recognized as the premier bearing solutions provider across East Africa with the largest inventory and fastest delivery times.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-white text-sm">🌍</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Global Import Network</h4>
+                                <p class="text-gray-600">Direct partnerships with world-class manufacturers enable us to import specialized bearings on request for unique applications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-white text-sm">🚚</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Nationwide Delivery</h4>
+                                <p class="text-gray-600">From Nairobi to all 47 counties in Kenya, we ensure your bearings reach you quickly and safely.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-white text-sm">⚡</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">24/7 Support</h4>
+                                <p class="text-gray-600">Round-the-clock technical support and emergency supply services to keep your operations running smoothly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <!-- Company Image Placeholder -->
+                    <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-gray-500 text-lg">[Company/Team Image Placeholder]</span>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Serving Africa Since 2010</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            From our headquarters in Nairobi, we've grown to become Africa's most trusted bearing solutions provider, serving industries from mining to manufacturing across the continent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Trusted by leading companies across Africa
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-gray-600 text-sm">[Photo]</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">[Customer Name]</h4>
+                            <p class="text-gray-600 text-sm">[Company Name], Nairobi</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "[Customer testimonial about excellent service, quality products, and reliable delivery from M.L Bearing Solutions.]"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-gray-600 text-sm">[Photo]</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">[Customer Name]</h4>
+                            <p class="text-gray-600 text-sm">[Company Name], Mombasa</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "[Customer testimonial about import services, technical expertise, and professional support team.]"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-gray-600 text-sm">[Photo]</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">[Customer Name]</h4>
+                            <p class="text-gray-600 text-sm">[Company Name], Kisumu</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "[Customer testimonial about nationwide delivery, competitive pricing, and long-term partnership benefits.]"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to get started? Contact Africa's premier bearing solutions provider
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Get in Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white">📍</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Location</p>
+                                <p class="text-gray-600">Nairobi, Kenya<br>Serving all 47 counties nationwide</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white">📞</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Phone & WhatsApp</p>
+                                <p class="text-gray-600">+254 721 881995</p>
+                                <a href="tel:+254721881995" class="text-blue-600 hover:text-blue-800">Call Now</a> | 
+                                <a href="https://wa.me/254721881995" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-800">WhatsApp</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white">✉️</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Email</p>
+                                <p class="text-gray-600">[Your Email Address]</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-white">🕒</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Business Hours</p>
+                                <p class="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>24/7 Emergency Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                <input type="text" id="contact-name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" id="contact-email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <select id="contact-subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select a subject</option>
+                                <option value="product-inquiry">Product Inquiry</option>
+                                <option value="quote-request">Quote Request</option>
+                                <option value="technical-support">Technical Support</option>
+                                <option value="import-request">Import Request</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="contact-message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell us about your bearing requirements..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <div id="contact-message-result" class="mt-4 p-4 rounded-lg hidden"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">ML</span>
+                        </div>
+                        <div>
+                            <span class="text-lg font-bold">M.L Bearing Solutions</span>
+                            <p class="text-xs text-gray-400">Africa's Premier Bearing Company</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Leading Kenya and East Africa with premium industrial bearings and expert solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="tel:+254721881995" class="text-gray-400 hover:text-white">📞</a>
+                        <a href="https://wa.me/254721881995" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">💬</a>
+                        <a href="#" class="text-gray-400 hover:text-white">📧</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Products</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Ball Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Roller Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Thrust Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Needle Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Custom Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Import on Request</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Technical Support</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Nationwide Delivery</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Emergency Service</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Installation Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📍 Nairobi, Kenya</li>
+                        <li>📞 +254 721 881995</li>
+                        <li>💬 WhatsApp Available</li>
+                        <li>🚚 All 47 Counties</li>
+                        <li>⏰ 24/7 Emergency Support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 M.L Bearing Solutions. All rights reserved. | Africa's Premier Bearing Company</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Login</h3>
+                <button id="close-login" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label for="login-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="login-email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="login-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" id="login-password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                    Login
+                </button>
+            </form>
+            
+            <div class="mt-4 text-center">
+                <p class="text-gray-600">Don't have an account? <button id="show-register" class="text-blue-600 hover:text-blue-800">Register here</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Register</h3>
+                <button id="close-register" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="register-form" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="register-firstname" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                        <input type="text" id="register-firstname" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="register-lastname" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                        <input type="text" id="register-lastname" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+                <div>
+                    <label for="register-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" id="register-email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="register-phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                    <input type="tel" id="register-phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label for="register-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" id="register-password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                    Register
+                </button>
+            </form>
+            
+            <div class="mt-4 text-center">
+                <p class="text-gray-600">Already have an account? <button id="show-login" class="text-blue-600 hover:text-blue-800">Login here</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Shopping Cart</h3>
+                <button id="close-cart" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Cart items will be dynamically loaded here -->
+            </div>
+            
+            <div class="border-t pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-bold">Total: KSh <span id="cart-total">0</span></span>
+                </div>
+                <div class="space-y-2">
+                    <button id="checkout-btn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        Proceed to Checkout
+                    </button>
+                    <button id="continue-shopping" class="w-full bg-gray-200 text-gray-800 py-3 rounded-lg font-semibold hover:bg-gray-300 transition duration-300">
+                        Continue Shopping
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div id="favorites-modal" class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Favorites</h3>
+                <button id="close-favorites" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="favorites-items" class="grid md:grid-cols-2 gap-4">
+                <!-- Favorite items will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="product-modal-title" class="text-2xl font-bold text-gray-800"></h3>
+                <button id="close-product" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="product-modal-content" class="grid md:grid-cols-2 gap-8">
+                <!-- Product details will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="fixed top-20 right-4 z-50 space-y-2">
+        <!-- Toast messages will appear here -->
+    </div>
+
+    <script>
+        // Global variables
+        let cart = JSON.parse(localStorage.getItem('ml-cart')) || [];
+        let favorites = JSON.parse(localStorage.getItem('ml-favorites')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('ml-user')) || null;
+        let products = [];
+        let currentPage = 1;
+        const productsPerPage = 8;
+
+        // Sample product data
+        const sampleProducts = [
+            {
+                id: 1,
+                name: "Deep Groove Ball Bearing 6205",
+                category: "ball-bearings",
+                price: 850,
+                image: "[Ball Bearing 6205 Image]",
+                description: "High-quality deep groove ball bearing suitable for various industrial applications.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "52mm",
+                    "Width": "15mm",
+                    "Load Rating": "14.0 kN",
+                    "Speed Rating": "18000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 2,
+                name: "Cylindrical Roller Bearing NU206",
+                category: "roller-bearings",
+                price: 1250,
+                image: "[Roller Bearing NU206 Image]",
+                description: "Heavy-duty cylindrical roller bearing for high radial loads.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "62mm",
+                    "Width": "16mm",
+                    "Load Rating": "19.5 kN",
+                    "Speed Rating": "12000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 3,
+                name: "Thrust Ball Bearing 51205",
+                category: "thrust-bearings",
+                price: 950,
+                image: "[Thrust Bearing 51205 Image]",
+                description: "Precision thrust ball bearing for axial load applications.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "47mm",
+                    "Height": "15mm",
+                    "Load Rating": "16.0 kN",
+                    "Speed Rating": "8000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 4,
+                name: "Needle Roller Bearing NK25/20",
+                category: "needle-bearings",
+                price: 650,
+                image: "[Needle Bearing NK25/20 Image]",
+                description: "Compact needle roller bearing for space-constrained applications.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "33mm",
+                    "Width": "20mm",
+                    "Load Rating": "12.5 kN",
+                    "Speed Rating": "15000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 5,
+                name: "Spherical Roller Bearing 22205",
+                category: "spherical-bearings",
+                price: 1450,
+                image: "[Spherical Bearing 22205 Image]",
+                description: "Self-aligning spherical roller bearing for heavy loads.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "52mm",
+                    "Width": "18mm",
+                    "Load Rating": "22.0 kN",
+                    "Speed Rating": "10000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 6,
+                name: "Angular Contact Ball Bearing 7205",
+                category: "ball-bearings",
+                price: 1150,
+                image: "[Angular Contact Bearing 7205 Image]",
+                description: "High-precision angular contact ball bearing for combined loads.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "52mm",
+                    "Width": "15mm",
+                    "Load Rating": "18.0 kN",
+                    "Speed Rating": "20000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 7,
+                name: "Tapered Roller Bearing 30205",
+                category: "roller-bearings",
+                price: 1350,
+                image: "[Tapered Roller Bearing 30205 Image]",
+                description: "Premium tapered roller bearing for heavy radial and axial loads.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "52mm",
+                    "Width": "16.25mm",
+                    "Load Rating": "25.0 kN",
+                    "Speed Rating": "9000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 8,
+                name: "Self-Aligning Ball Bearing 1205",
+                category: "ball-bearings",
+                price: 750,
+                image: "[Self-Aligning Ball Bearing 1205 Image]",
+                description: "Self-aligning ball bearing for applications with shaft misalignment.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "52mm",
+                    "Width": "15mm",
+                    "Load Rating": "12.0 kN",
+                    "Speed Rating": "16000 rpm"
+                },
+                inStock: true,
+                featured: false
+            }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            products = [...sampleProducts];
+            loadProducts();
+            updateCartCount();
+            updateFavoritesCount();
+            updateUserInterface();
+            initializeEventListeners();
+        });
+
+        // Event Listeners
+        function initializeEventListeners() {
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+
+            // Search functionality
+            document.getElementById('search-input').addEventListener('input', handleSearch);
+
+            // Filter and sort
+            document.getElementById('category-filter').addEventListener('change', handleFilter);
+            document.getElementById('sort-filter').addEventListener('change', handleSort);
+
+            // Modal controls
+            setupModalControls();
+
+            // Form submissions
+            setupFormHandlers();
+
+            // Smooth scrolling
+            setupSmoothScrolling();
+        }
+
+        // Product Management
+        function loadProducts() {
+            const grid = document.getElementById('products-grid');
+            const filteredProducts = getFilteredProducts();
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(0, endIndex);
+
+            grid.innerHTML = productsToShow.map(product => createProductCard(product)).join('');
+
+            // Show/hide load more button
+            const loadMoreBtn = document.getElementById('load-more');
+            if (endIndex >= filteredProducts.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+                loadMoreBtn.onclick = loadMoreProducts;
+            }
+        }
+
+        function createProductCard(product) {
+            const isInCart = cart.some(item => item.id === product.id);
+            const isInFavorites = favorites.some(item => item.id === product.id);
+
+            return `
+                <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <span class="text-gray-500">${product.image}</span>
+                        </div>
+                        <button onclick="toggleFavorite(${product.id})" class="absolute top-2 right-2 p-2 rounded-full ${isInFavorites ? 'bg-red-500 text-white' : 'bg-white text-gray-400'} hover:bg-red-500 hover:text-white transition duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </button>
+                        ${!product.inStock ? '<div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded">Out of Stock</div>' : ''}
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">${product.name}</h3>
+                        <p class="text-gray-600 mb-4 text-sm">${product.description}</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600">KSh ${product.price.toLocaleString()}</span>
+                            <span class="text-sm text-gray-500">${product.inStock ? 'In Stock' : 'Out of Stock'}</span>
+                        </div>
+                        <div class="space-y-2">
+                            <button onclick="viewProduct(${product.id})" class="w-full bg-gray-100 text-gray-800 py-2 px-4 rounded-lg font-semibold hover:bg-gray-200 transition duration-300">
+                                View Details
+                            </button>
+                            <button onclick="addToCart(${product.id})" ${!product.inStock ? 'disabled' : ''} class="w-full ${isInCart ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white py-2 px-4 rounded-lg font-semibold transition duration-300 ${!product.inStock ? 'opacity-50 cursor-not-allowed' : ''}">
+                                ${isInCart ? 'Added to Cart ✓' : 'Add to Cart'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getFilteredProducts() {
+            let filtered = [...products];
+            
+            // Apply category filter
+            const categoryFilter = document.getElementById('category-filter').value;
+            if (categoryFilter !== 'all') {
+                filtered = filtered.filter(product => product.category === categoryFilter);
+            }
+
+            // Apply search filter
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            if (searchTerm) {
+                filtered = filtered.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            // Apply sorting
+            const sortFilter = document.getElementById('sort-filter').value;
+            switch (sortFilter) {
+                case 'price-low':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    filtered.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                default: // featured
+                    filtered.sort((a, b) => b.featured - a.featured);
+            }
+
+            return filtered;
+        }
+
+        function filterProducts(category) {
+            document.getElementById('category-filter').value = category;
+            currentPage = 1;
+            loadProducts();
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleSearch() {
+            currentPage = 1;
+            loadProducts();
+        }
+
+        function handleFilter() {
+            currentPage = 1;
+            loadProducts();
+        }
+
+        function handleSort() {
+            currentPage = 1;
+            loadProducts();
+        }
+
+        function loadMoreProducts() {
+            currentPage++;
+            loadProducts();
+        }
+
+        // Cart Management
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.inStock) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            localStorage.setItem('ml-cart', JSON.stringify(cart));
+            updateCartCount();
+            loadProducts(); // Refresh to update button states
+            showToast('Product added to cart!', 'success');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('ml-cart', JSON.stringify(cart));
+            updateCartCount();
+            loadCartItems();
+            loadProducts(); // Refresh to update button states
+            showToast('Product removed from cart!', 'info');
+        }
+
+        function updateCartQuantity(productId, quantity) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                if (quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    item.quantity = quantity;
+                    localStorage.setItem('ml-cart', JSON.stringify(cart));
+                    updateCartCount();
+                    loadCartItems();
+                }
+            }
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartCountElement = document.getElementById('cart-count');
+            if (count > 0) {
+                cartCountElement.textContent = count;
+                cartCountElement.classList.remove('hidden');
+            } else {
+                cartCountElement.classList.add('hidden');
+            }
+        }
+
+        function loadCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty</p>';
+                cartTotalElement.textContent = '0';
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalElement.textContent = total.toLocaleString();
+
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-4 p-4 border rounded-lg">
+                    <div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center flex-shrink-0">
+                        <span class="text-xs text-gray-500">${item.image}</span>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800">${item.name}</h4>
+                        <p class="text-sm text-gray-600">KSh ${item.price.toLocaleString()}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})" class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center hover:bg-gray-300">-</button>
+                        <span class="w-8 text-center">${item.quantity}</span>
+                        <button onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})" class="w-8 h-8 bg-gray-200 rounded flex items-center justify-center hover:bg-gray-300">+</button>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Favorites Management
+        function toggleFavorite(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingIndex = favorites.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                favorites.splice(existingIndex, 1);
+                showToast('Removed from favorites!', 'info');
+            } else {
+                favorites.push(product);
+                showToast('Added to favorites!', 'success');
+            }
+
+            localStorage.setItem('ml-favorites', JSON.stringify(favorites));
+            updateFavoritesCount();
+            loadProducts(); // Refresh to update button states
+            loadFavoriteItems();
+        }
+
+        function updateFavoritesCount() {
+            const count = favorites.length;
+            const favoritesCountElement = document.getElementById('favorites-count');
+            if (count > 0) {
+                favoritesCountElement.textContent = count;
+                favoritesCountElement.classList.remove('hidden');
+            } else {
+                favoritesCountElement.classList.add('hidden');
+            }
+        }
+
+        function loadFavoriteItems() {
+            const favoritesContainer = document.getElementById('favorites-items');
+
+            if (favorites.length === 0) {
+                favoritesContainer.innerHTML = '<p class="text-gray-500 text-center py-8 col-span-2">No favorites yet</p>';
+                return;
+            }
+
+            favoritesContainer.innerHTML = favorites.map(item => `
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="h-32 bg-gray-200 rounded mb-4 flex items-center justify-center">
+                        <span class="text-gray-500 text-sm">${item.image}</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-800 mb-2">${item.name}</h4>
+                    <p class="text-blue-600 font-bold mb-3">KSh ${item.price.toLocaleString()}</p>
+                    <div class="space-y-2">
+                        <button onclick="addToCart(${item.id})" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-300">
+                            Add to Cart
+                        </button>
+                        <button onclick="toggleFavorite(${item.id})" class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 transition duration-300">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Product Detail Modal
+        function viewProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modal = document.getElementById('product-modal');
+            const title = document.getElementById('product-modal-title');
+            const content = document.getElementById('product-modal-content');
+
+            title.textContent = product.name;
+
+            const isInCart = cart.some(item => item.id === product.id);
+            const isInFavorites = favorites.some(item => item.id === product.id);
+
+            content.innerHTML = `
+                <div>
+                    <div class="h-64 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-gray-500">${product.image}</span>
+                    </div>
+                    <div class="space-y-2">
+                        <button onclick="addToCart(${product.id}); closeModal('product-modal')" ${!product.inStock ? 'disabled' : ''} class="w-full ${isInCart ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white py-3 rounded-lg font-semibold transition duration-300 ${!product.inStock ? 'opacity-50 cursor-not-allowed' : ''}">
+                            ${isInCart ? 'Added to Cart ✓' : 'Add to Cart'}
+                        </button>
+                        <button onclick="toggleFavorite(${product.id})" class="w-full ${isInFavorites ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-200 hover:bg-gray-300 text-gray-800'} ${isInFavorites ? 'text-white' : ''} py-3 rounded-lg font-semibold transition duration-300">
+                            ${isInFavorites ? 'Remove from Favorites' : 'Add to Favorites'}
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="mb-6">
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">Description</h4>
+                        <p class="text-gray-600">${product.description}</p>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">Price</h4>
+                        <p class="text-3xl font-bold text-blue-600">KSh ${product.price.toLocaleString()}</p>
+                        <p class="text-sm text-gray-500">${product.inStock ? 'In Stock' : 'Out of Stock'}</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4">Specifications</h4>
+                        <div class="space-y-2">
+                            ${Object.entries(product.specifications).map(([key, value]) => `
+                                <div class="flex justify-between py-2 border-b border-gray-200">
+                                    <span class="font-medium text-gray-700">${key}:</span>
+                                    <span class="text-gray-600">${value}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Modal Management
+        function setupModalControls() {
+            // Account button
+            document.getElementById('account-btn').addEventListener('click', () => {
+                if (currentUser) {
+                    showUserMenu();
+                } else {
+                    showModal('login-modal');
+                }
+            });
+
+            // Cart button
+            document.getElementById('cart-btn').addEventListener('click', () => {
+                loadCartItems();
+                showModal('cart-modal');
+            });
+
+            // Favorites button
+            document.getElementById('favorites-btn').addEventListener('click', () => {
+                loadFavoriteItems();
+                showModal('favorites-modal');
+            });
+
+            // Close buttons
+            document.querySelectorAll('[id^="close-"]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const modalId = e.target.id.replace('close-', '') + '-modal';
+                    closeModal(modalId);
+                });
+            });
+
+            // Modal switching
+            document.getElementById('show-register').addEventListener('click', () => {
+                closeModal('login-modal');
+                showModal('register-modal');
+            });
+
+            document.getElementById('show-login').addEventListener('click', () => {
+                closeModal('register-modal');
+                showModal('login-modal');
+            });
+
+            // Continue shopping
+            document.getElementById('continue-shopping').addEventListener('click', () => {
+                closeModal('cart-modal');
+            });
+
+            // Checkout
+            document.getElementById('checkout-btn').addEventListener('click', handleCheckout);
+        }
+
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // User Management
+        function updateUserInterface() {
+            const accountBtn = document.getElementById('account-btn');
+            if (currentUser) {
+                accountBtn.innerHTML = `
+                    <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <span class="hidden md:block">${currentUser.firstName}</span>
+                `;
+            }
+        }
+
+        function showUserMenu() {
+            // Simple user menu implementation
+            const userActions = [
+                'View Orders',
+                'Account Settings',
+                'Logout'
+            ];
+            
+            const action = userActions[Math.floor(Math.random() * userActions.length)];
+            
+            if (action === 'Logout') {
+                currentUser = null;
+                localStorage.removeItem('ml-user');
+                updateUserInterface();
+                showToast('Logged out successfully!', 'info');
+            } else {
+                showToast(`${action} - Feature coming soon!`, 'info');
+            }
+        }
+
+        // Form Handlers
+        function setupFormHandlers() {
+            // Login form
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Simple login simulation
+                currentUser = {
+                    email: email,
+                    firstName: email.split('@')[0],
+                    lastName: 'User'
+                };
+                
+                localStorage.setItem('ml-user', JSON.stringify(currentUser));
+                updateUserInterface();
+                closeModal('login-modal');
+                showToast('Login successful!', 'success');
+            });
+
+            // Register form
+            document.getElementById('register-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const firstName = document.getElementById('register-firstname').value;
+                const lastName = document.getElementById('register-lastname').value;
+                const email = document.getElementById('register-email').value;
+                
+                currentUser = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email
+                };
+                
+                localStorage.setItem('ml-user', JSON.stringify(currentUser));
+                updateUserInterface();
+                closeModal('register-modal');
+                showToast('Registration successful!', 'success');
+            });
+
+            // Contact form
+            document.getElementById('contact-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const messageDiv = document.getElementById('contact-message-result');
+                messageDiv.className = 'mt-4 p-4 rounded-lg bg-green-100 border border-green-400 text-green-700';
+                messageDiv.textContent = 'Thank you for your message! We will get back to you within 24 hours.';
+                messageDiv.classList.remove('hidden');
+                
+                document.getElementById('contact-form').reset();
+                
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            });
+
+            // Import request form
+            document.getElementById('import-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const messageDiv = document.getElementById('import-message');
+                messageDiv.className = 'mt-4 p-4 rounded-lg bg-green-100 border border-green-400 text-green-700';
+                messageDiv.textContent = 'Import request submitted successfully! Our team will contact you within 24 hours with a quote and timeline.';
+                messageDiv.classList.remove('hidden');
+                
+                document.getElementById('import-form').reset();
+                
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            });
+        }
+
+        // Checkout
+        function handleCheckout() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!', 'error');
+                return;
+            }
+
+            if (!currentUser) {
+                closeModal('cart-modal');
+                showModal('login-modal');
+                showToast('Please login to proceed with checkout', 'info');
+                return;
+            }
+
+            // Simple checkout simulation
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderNumber = 'ML' + Date.now().toString().slice(-6);
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('ml-cart', JSON.stringify(cart));
+            updateCartCount();
+            closeModal('cart-modal');
+            
+            showToast(`Order ${orderNumber} placed successfully! Total: KSh ${total.toLocaleString()}. We'll contact you for delivery details.`, 'success');
+        }
+
+        // Utility Functions
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            const bgColor = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                info: 'bg-blue-500'
+            }[type] || 'bg-gray-500';
+            
+            toast.className = `toast ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg max-w-sm`;
+            toast.textContent = message;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu if open
+                        document.getElementById('mobile-menu').classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.add('hidden');
+                e.target.classList.remove('flex');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'990f8c17d70aea48',t:'MTc2MDg2OTI3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
