@@ -318,6 +318,7 @@
                         <option value="thrust-bearings">Thrust Bearings</option>
                         <option value="needle-bearings">Needle Bearings</option>
                         <option value="spherical-bearings">Spherical Bearings</option>
+                        <option value="custom-solutions">Custom Solutions</option>
                     </select>
                     <select id="sort-filter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                         <option value="featured">Featured</option>
@@ -889,8 +890,9 @@
         let currentPage = 1;
         const productsPerPage = 8;
 
-        // Sample product data
+        // Sample product data - 50 products across all categories
         const sampleProducts = [
+            // Ball Bearings (10 products)
             {
                 id: 1,
                 name: "Deep Groove Ball Bearing 6205",
@@ -910,74 +912,6 @@
             },
             {
                 id: 2,
-                name: "Cylindrical Roller Bearing NU206",
-                category: "roller-bearings",
-                price: 1250,
-                image: "[Roller Bearing NU206 Image]",
-                description: "Heavy-duty cylindrical roller bearing for high radial loads.",
-                specifications: {
-                    "Inner Diameter": "30mm",
-                    "Outer Diameter": "62mm",
-                    "Width": "16mm",
-                    "Load Rating": "19.5 kN",
-                    "Speed Rating": "12000 rpm"
-                },
-                inStock: true,
-                featured: true
-            },
-            {
-                id: 3,
-                name: "Thrust Ball Bearing 51205",
-                category: "thrust-bearings",
-                price: 950,
-                image: "[Thrust Bearing 51205 Image]",
-                description: "Precision thrust ball bearing for axial load applications.",
-                specifications: {
-                    "Inner Diameter": "25mm",
-                    "Outer Diameter": "47mm",
-                    "Height": "15mm",
-                    "Load Rating": "16.0 kN",
-                    "Speed Rating": "8000 rpm"
-                },
-                inStock: true,
-                featured: true
-            },
-            {
-                id: 4,
-                name: "Needle Roller Bearing NK25/20",
-                category: "needle-bearings",
-                price: 650,
-                image: "[Needle Bearing NK25/20 Image]",
-                description: "Compact needle roller bearing for space-constrained applications.",
-                specifications: {
-                    "Inner Diameter": "25mm",
-                    "Outer Diameter": "33mm",
-                    "Width": "20mm",
-                    "Load Rating": "12.5 kN",
-                    "Speed Rating": "15000 rpm"
-                },
-                inStock: true,
-                featured: false
-            },
-            {
-                id: 5,
-                name: "Spherical Roller Bearing 22205",
-                category: "spherical-bearings",
-                price: 1450,
-                image: "[Spherical Bearing 22205 Image]",
-                description: "Self-aligning spherical roller bearing for heavy loads.",
-                specifications: {
-                    "Inner Diameter": "25mm",
-                    "Outer Diameter": "52mm",
-                    "Width": "18mm",
-                    "Load Rating": "22.0 kN",
-                    "Speed Rating": "10000 rpm"
-                },
-                inStock: true,
-                featured: true
-            },
-            {
-                id: 6,
                 name: "Angular Contact Ball Bearing 7205",
                 category: "ball-bearings",
                 price: 1150,
@@ -994,7 +928,162 @@
                 featured: false
             },
             {
+                id: 3,
+                name: "Self-Aligning Ball Bearing 1205",
+                category: "ball-bearings",
+                price: 750,
+                image: "[Self-Aligning Ball Bearing 1205 Image]",
+                description: "Self-aligning ball bearing for applications with shaft misalignment.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "52mm",
+                    "Width": "15mm",
+                    "Load Rating": "12.0 kN",
+                    "Speed Rating": "16000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 4,
+                name: "Deep Groove Ball Bearing 6004",
+                category: "ball-bearings",
+                price: 450,
+                image: "[Ball Bearing 6004 Image]",
+                description: "Compact deep groove ball bearing for light to medium loads.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "42mm",
+                    "Width": "12mm",
+                    "Load Rating": "9.5 kN",
+                    "Speed Rating": "22000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 5,
+                name: "Deep Groove Ball Bearing 6208",
+                category: "ball-bearings",
+                price: 1250,
+                image: "[Ball Bearing 6208 Image]",
+                description: "Heavy-duty deep groove ball bearing for industrial machinery.",
+                specifications: {
+                    "Inner Diameter": "40mm",
+                    "Outer Diameter": "80mm",
+                    "Width": "18mm",
+                    "Load Rating": "25.5 kN",
+                    "Speed Rating": "14000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 6,
+                name: "Angular Contact Ball Bearing 7306",
+                category: "ball-bearings",
+                price: 1450,
+                image: "[Angular Contact Bearing 7306 Image]",
+                description: "Premium angular contact bearing for high-speed applications.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "72mm",
+                    "Width": "19mm",
+                    "Load Rating": "28.0 kN",
+                    "Speed Rating": "18000 rpm"
+                },
+                inStock: false,
+                featured: false
+            },
+            {
                 id: 7,
+                name: "Deep Groove Ball Bearing 6003",
+                category: "ball-bearings",
+                price: 380,
+                image: "[Ball Bearing 6003 Image]",
+                description: "Miniature deep groove ball bearing for precision applications.",
+                specifications: {
+                    "Inner Diameter": "17mm",
+                    "Outer Diameter": "35mm",
+                    "Width": "10mm",
+                    "Load Rating": "6.8 kN",
+                    "Speed Rating": "26000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 8,
+                name: "Self-Aligning Ball Bearing 1307",
+                category: "ball-bearings",
+                price: 950,
+                image: "[Self-Aligning Ball Bearing 1307 Image]",
+                description: "Self-aligning ball bearing with extended inner ring.",
+                specifications: {
+                    "Inner Diameter": "35mm",
+                    "Outer Diameter": "80mm",
+                    "Width": "21mm",
+                    "Load Rating": "18.6 kN",
+                    "Speed Rating": "12000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 9,
+                name: "Deep Groove Ball Bearing 6210",
+                category: "ball-bearings",
+                price: 1350,
+                image: "[Ball Bearing 6210 Image]",
+                description: "Large deep groove ball bearing for heavy machinery.",
+                specifications: {
+                    "Inner Diameter": "50mm",
+                    "Outer Diameter": "90mm",
+                    "Width": "20mm",
+                    "Load Rating": "35.1 kN",
+                    "Speed Rating": "11000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 10,
+                name: "Angular Contact Ball Bearing 7204",
+                category: "ball-bearings",
+                price: 850,
+                image: "[Angular Contact Bearing 7204 Image]",
+                description: "Standard angular contact bearing for moderate loads.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "47mm",
+                    "Width": "14mm",
+                    "Load Rating": "12.8 kN",
+                    "Speed Rating": "22000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+
+            // Roller Bearings (10 products)
+            {
+                id: 11,
+                name: "Cylindrical Roller Bearing NU206",
+                category: "roller-bearings",
+                price: 1250,
+                image: "[Roller Bearing NU206 Image]",
+                description: "Heavy-duty cylindrical roller bearing for high radial loads.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "62mm",
+                    "Width": "16mm",
+                    "Load Rating": "19.5 kN",
+                    "Speed Rating": "12000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 12,
                 name: "Tapered Roller Bearing 30205",
                 category: "roller-bearings",
                 price: 1350,
@@ -1011,21 +1100,658 @@
                 featured: true
             },
             {
-                id: 8,
-                name: "Self-Aligning Ball Bearing 1205",
-                category: "ball-bearings",
+                id: 13,
+                name: "Cylindrical Roller Bearing NU308",
+                category: "roller-bearings",
+                price: 1850,
+                image: "[Roller Bearing NU308 Image]",
+                description: "Large cylindrical roller bearing for heavy industrial applications.",
+                specifications: {
+                    "Inner Diameter": "40mm",
+                    "Outer Diameter": "90mm",
+                    "Width": "23mm",
+                    "Load Rating": "45.0 kN",
+                    "Speed Rating": "8500 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 14,
+                name: "Tapered Roller Bearing 32006",
+                category: "roller-bearings",
+                price: 950,
+                image: "[Tapered Roller Bearing 32006 Image]",
+                description: "Single row tapered roller bearing for automotive applications.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "55mm",
+                    "Width": "17mm",
+                    "Load Rating": "18.3 kN",
+                    "Speed Rating": "11000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 15,
+                name: "Cylindrical Roller Bearing NJ204",
+                category: "roller-bearings",
+                price: 850,
+                image: "[Roller Bearing NJ204 Image]",
+                description: "Cylindrical roller bearing with flanges on inner ring.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "47mm",
+                    "Width": "14mm",
+                    "Load Rating": "12.8 kN",
+                    "Speed Rating": "15000 rpm"
+                },
+                inStock: false,
+                featured: false
+            },
+            {
+                id: 16,
+                name: "Tapered Roller Bearing 30208",
+                category: "roller-bearings",
+                price: 1650,
+                image: "[Tapered Roller Bearing 30208 Image]",
+                description: "Heavy-duty tapered roller bearing for construction equipment.",
+                specifications: {
+                    "Inner Diameter": "40mm",
+                    "Outer Diameter": "80mm",
+                    "Width": "19.75mm",
+                    "Load Rating": "42.0 kN",
+                    "Speed Rating": "7500 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 17,
+                name: "Cylindrical Roller Bearing NU210",
+                category: "roller-bearings",
+                price: 1950,
+                image: "[Roller Bearing NU210 Image]",
+                description: "Large cylindrical roller bearing for mining equipment.",
+                specifications: {
+                    "Inner Diameter": "50mm",
+                    "Outer Diameter": "90mm",
+                    "Width": "20mm",
+                    "Load Rating": "53.0 kN",
+                    "Speed Rating": "7500 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 18,
+                name: "Tapered Roller Bearing 32204",
+                category: "roller-bearings",
                 price: 750,
-                image: "[Self-Aligning Ball Bearing 1205 Image]",
-                description: "Self-aligning ball bearing for applications with shaft misalignment.",
+                image: "[Tapered Roller Bearing 32204 Image]",
+                description: "Compact tapered roller bearing for light commercial vehicles.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "47mm",
+                    "Width": "15.25mm",
+                    "Load Rating": "15.9 kN",
+                    "Speed Rating": "13000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 19,
+                name: "Cylindrical Roller Bearing NUP206",
+                category: "roller-bearings",
+                price: 1450,
+                image: "[Roller Bearing NUP206 Image]",
+                description: "Cylindrical roller bearing with flanges and removable flange ring.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "62mm",
+                    "Width": "16mm",
+                    "Load Rating": "19.5 kN",
+                    "Speed Rating": "12000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 20,
+                name: "Tapered Roller Bearing 30310",
+                category: "roller-bearings",
+                price: 2250,
+                image: "[Tapered Roller Bearing 30310 Image]",
+                description: "Extra large tapered roller bearing for heavy industrial machinery.",
+                specifications: {
+                    "Inner Diameter": "50mm",
+                    "Outer Diameter": "110mm",
+                    "Width": "29.25mm",
+                    "Load Rating": "78.0 kN",
+                    "Speed Rating": "5600 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+
+            // Thrust Bearings (8 products)
+            {
+                id: 21,
+                name: "Thrust Ball Bearing 51205",
+                category: "thrust-bearings",
+                price: 950,
+                image: "[Thrust Bearing 51205 Image]",
+                description: "Precision thrust ball bearing for axial load applications.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "47mm",
+                    "Height": "15mm",
+                    "Load Rating": "16.0 kN",
+                    "Speed Rating": "8000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 22,
+                name: "Thrust Ball Bearing 51208",
+                category: "thrust-bearings",
+                price: 1350,
+                image: "[Thrust Bearing 51208 Image]",
+                description: "Heavy-duty thrust ball bearing for high axial loads.",
+                specifications: {
+                    "Inner Diameter": "40mm",
+                    "Outer Diameter": "68mm",
+                    "Height": "19mm",
+                    "Load Rating": "28.0 kN",
+                    "Speed Rating": "6000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 23,
+                name: "Thrust Roller Bearing 81205",
+                category: "thrust-bearings",
+                price: 1150,
+                image: "[Thrust Roller Bearing 81205 Image]",
+                description: "Cylindrical roller thrust bearing for heavy axial loads.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "47mm",
+                    "Height": "12mm",
+                    "Load Rating": "32.0 kN",
+                    "Speed Rating": "4500 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 24,
+                name: "Thrust Ball Bearing 51204",
+                category: "thrust-bearings",
+                price: 750,
+                image: "[Thrust Bearing 51204 Image]",
+                description: "Standard thrust ball bearing for moderate axial loads.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "40mm",
+                    "Height": "14mm",
+                    "Load Rating": "11.2 kN",
+                    "Speed Rating": "9500 rpm"
+                },
+                inStock: false,
+                featured: false
+            },
+            {
+                id: 25,
+                name: "Thrust Roller Bearing 81208",
+                category: "thrust-bearings",
+                price: 1650,
+                image: "[Thrust Roller Bearing 81208 Image]",
+                description: "Heavy-duty cylindrical roller thrust bearing.",
+                specifications: {
+                    "Inner Diameter": "40mm",
+                    "Outer Diameter": "68mm",
+                    "Height": "15mm",
+                    "Load Rating": "55.0 kN",
+                    "Speed Rating": "3800 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 26,
+                name: "Thrust Ball Bearing 51210",
+                category: "thrust-bearings",
+                price: 1550,
+                image: "[Thrust Bearing 51210 Image]",
+                description: "Large thrust ball bearing for heavy machinery applications.",
+                specifications: {
+                    "Inner Diameter": "50mm",
+                    "Outer Diameter": "78mm",
+                    "Height": "22mm",
+                    "Load Rating": "40.0 kN",
+                    "Speed Rating": "5000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 27,
+                name: "Thrust Needle Roller Bearing AXK2542",
+                category: "thrust-bearings",
+                price: 850,
+                image: "[Thrust Needle Bearing AXK2542 Image]",
+                description: "Compact thrust needle roller bearing with cage.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "42mm",
+                    "Height": "2mm",
+                    "Load Rating": "18.6 kN",
+                    "Speed Rating": "7500 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 28,
+                name: "Thrust Roller Bearing 81210",
+                category: "thrust-bearings",
+                price: 1850,
+                image: "[Thrust Roller Bearing 81210 Image]",
+                description: "Extra heavy-duty cylindrical roller thrust bearing.",
+                specifications: {
+                    "Inner Diameter": "50mm",
+                    "Outer Diameter": "78mm",
+                    "Height": "16mm",
+                    "Load Rating": "75.0 kN",
+                    "Speed Rating": "3200 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+
+            // Needle Bearings (8 products)
+            {
+                id: 29,
+                name: "Needle Roller Bearing NK25/20",
+                category: "needle-bearings",
+                price: 650,
+                image: "[Needle Bearing NK25/20 Image]",
+                description: "Compact needle roller bearing for space-constrained applications.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "33mm",
+                    "Width": "20mm",
+                    "Load Rating": "12.5 kN",
+                    "Speed Rating": "15000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 30,
+                name: "Drawn Cup Needle Bearing HK2020",
+                category: "needle-bearings",
+                price: 450,
+                image: "[Drawn Cup Needle Bearing HK2020 Image]",
+                description: "Drawn cup needle roller bearing with open ends.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "26mm",
+                    "Width": "20mm",
+                    "Load Rating": "8.5 kN",
+                    "Speed Rating": "18000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 31,
+                name: "Needle Roller Bearing NK30/30",
+                category: "needle-bearings",
+                price: 750,
+                image: "[Needle Bearing NK30/30 Image]",
+                description: "Heavy-duty needle roller bearing for high loads.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "40mm",
+                    "Width": "30mm",
+                    "Load Rating": "22.4 kN",
+                    "Speed Rating": "12000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 32,
+                name: "Drawn Cup Needle Bearing HK1512",
+                category: "needle-bearings",
+                price: 350,
+                image: "[Drawn Cup Needle Bearing HK1512 Image]",
+                description: "Miniature drawn cup needle bearing for precision applications.",
+                specifications: {
+                    "Inner Diameter": "15mm",
+                    "Outer Diameter": "21mm",
+                    "Width": "12mm",
+                    "Load Rating": "5.2 kN",
+                    "Speed Rating": "22000 rpm"
+                },
+                inStock: false,
+                featured: false
+            },
+            {
+                id: 33,
+                name: "Needle Roller Bearing NKI25/20",
+                category: "needle-bearings",
+                price: 850,
+                image: "[Needle Bearing NKI25/20 Image]",
+                description: "Needle roller bearing with inner ring and cage.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "37mm",
+                    "Width": "20mm",
+                    "Load Rating": "15.3 kN",
+                    "Speed Rating": "14000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 34,
+                name: "Drawn Cup Needle Bearing HK2525",
+                category: "needle-bearings",
+                price: 550,
+                image: "[Drawn Cup Needle Bearing HK2525 Image]",
+                description: "Standard drawn cup needle bearing for general applications.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "32mm",
+                    "Width": "25mm",
+                    "Load Rating": "12.7 kN",
+                    "Speed Rating": "15000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 35,
+                name: "Needle Roller Bearing NK35/20",
+                category: "needle-bearings",
+                price: 950,
+                image: "[Needle Bearing NK35/20 Image]",
+                description: "Large needle roller bearing for heavy-duty applications.",
+                specifications: {
+                    "Inner Diameter": "35mm",
+                    "Outer Diameter": "45mm",
+                    "Width": "20mm",
+                    "Load Rating": "19.0 kN",
+                    "Speed Rating": "11000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 36,
+                name: "Drawn Cup Needle Bearing HK3020",
+                category: "needle-bearings",
+                price: 650,
+                image: "[Drawn Cup Needle Bearing HK3020 Image]",
+                description: "Heavy-duty drawn cup needle bearing with closed end.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "37mm",
+                    "Width": "20mm",
+                    "Load Rating": "14.6 kN",
+                    "Speed Rating": "13000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+
+            // Spherical Bearings (8 products)
+            {
+                id: 37,
+                name: "Spherical Roller Bearing 22205",
+                category: "spherical-bearings",
+                price: 1450,
+                image: "[Spherical Bearing 22205 Image]",
+                description: "Self-aligning spherical roller bearing for heavy loads.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "52mm",
+                    "Width": "18mm",
+                    "Load Rating": "22.0 kN",
+                    "Speed Rating": "10000 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 38,
+                name: "Spherical Roller Bearing 22208",
+                category: "spherical-bearings",
+                price: 1850,
+                image: "[Spherical Bearing 22208 Image]",
+                description: "Heavy-duty spherical roller bearing with brass cage.",
+                specifications: {
+                    "Inner Diameter": "40mm",
+                    "Outer Diameter": "80mm",
+                    "Width": "23mm",
+                    "Load Rating": "48.0 kN",
+                    "Speed Rating": "7500 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 39,
+                name: "Spherical Plain Bearing GE25ES",
+                category: "spherical-bearings",
+                price: 650,
+                image: "[Spherical Plain Bearing GE25ES Image]",
+                description: "Maintenance-free spherical plain bearing with steel/steel sliding contact.",
+                specifications: {
+                    "Inner Diameter": "25mm",
+                    "Outer Diameter": "42mm",
+                    "Width": "20mm",
+                    "Load Rating": "48.0 kN",
+                    "Tilt Angle": "±9°"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 40,
+                name: "Spherical Roller Bearing 22210",
+                category: "spherical-bearings",
+                price: 2250,
+                image: "[Spherical Bearing 22210 Image]",
+                description: "Large spherical roller bearing for mining and construction equipment.",
+                specifications: {
+                    "Inner Diameter": "50mm",
+                    "Outer Diameter": "90mm",
+                    "Width": "23mm",
+                    "Load Rating": "71.5 kN",
+                    "Speed Rating": "6300 rpm"
+                },
+                inStock: false,
+                featured: true
+            },
+            {
+                id: 41,
+                name: "Spherical Plain Bearing GE20ES",
+                category: "spherical-bearings",
+                price: 550,
+                image: "[Spherical Plain Bearing GE20ES Image]",
+                description: "Compact spherical plain bearing for oscillating movements.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "35mm",
+                    "Width": "16mm",
+                    "Load Rating": "30.0 kN",
+                    "Tilt Angle": "±7°"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 42,
+                name: "Spherical Roller Bearing 22206",
+                category: "spherical-bearings",
+                price: 1550,
+                image: "[Spherical Bearing 22206 Image]",
+                description: "Self-aligning spherical roller bearing with optimized internal geometry.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "62mm",
+                    "Width": "20mm",
+                    "Load Rating": "29.0 kN",
+                    "Speed Rating": "9000 rpm"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 43,
+                name: "Spherical Plain Bearing GE30ES",
+                category: "spherical-bearings",
+                price: 750,
+                image: "[Spherical Plain Bearing GE30ES Image]",
+                description: "Heavy-duty spherical plain bearing for construction machinery.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "47mm",
+                    "Width": "22mm",
+                    "Load Rating": "66.0 kN",
+                    "Tilt Angle": "±8°"
+                },
+                inStock: true,
+                featured: false
+            },
+            {
+                id: 44,
+                name: "Spherical Roller Bearing 22312",
+                category: "spherical-bearings",
+                price: 2850,
+                image: "[Spherical Bearing 22312 Image]",
+                description: "Extra large spherical roller bearing for heavy industrial applications.",
+                specifications: {
+                    "Inner Diameter": "60mm",
+                    "Outer Diameter": "130mm",
+                    "Width": "31mm",
+                    "Load Rating": "140.0 kN",
+                    "Speed Rating": "4500 rpm"
+                },
+                inStock: true,
+                featured: true
+            },
+
+            // Custom Solutions (6 products)
+            {
+                id: 45,
+                name: "High Temperature Bearing HTB-205",
+                category: "custom-solutions",
+                price: 2850,
+                image: "[High Temperature Bearing HTB-205 Image]",
+                description: "Specialized bearing for high-temperature applications up to 300°C.",
                 specifications: {
                     "Inner Diameter": "25mm",
                     "Outer Diameter": "52mm",
                     "Width": "15mm",
-                    "Load Rating": "12.0 kN",
-                    "Speed Rating": "16000 rpm"
+                    "Temperature Range": "-40°C to +300°C",
+                    "Load Rating": "12.0 kN"
                 },
                 inStock: true,
+                featured: true
+            },
+            {
+                id: 46,
+                name: "Corrosion Resistant Bearing CRB-308",
+                category: "custom-solutions",
+                price: 3250,
+                image: "[Corrosion Resistant Bearing CRB-308 Image]",
+                description: "Stainless steel bearing for marine and chemical industry applications.",
+                specifications: {
+                    "Inner Diameter": "40mm",
+                    "Outer Diameter": "90mm",
+                    "Width": "23mm",
+                    "Material": "316L Stainless Steel",
+                    "Load Rating": "35.0 kN"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 47,
+                name: "Food Grade Bearing FGB-206",
+                category: "custom-solutions",
+                price: 1850,
+                image: "[Food Grade Bearing FGB-206 Image]",
+                description: "FDA approved bearing for food processing equipment.",
+                specifications: {
+                    "Inner Diameter": "30mm",
+                    "Outer Diameter": "62mm",
+                    "Width": "16mm",
+                    "Certification": "FDA Approved",
+                    "Load Rating": "19.5 kN"
+                },
+                inStock: false,
                 featured: false
+            },
+            {
+                id: 48,
+                name: "Vacuum Environment Bearing VEB-204",
+                category: "custom-solutions",
+                price: 4250,
+                image: "[Vacuum Environment Bearing VEB-204 Image]",
+                description: "Special bearing designed for vacuum and space applications.",
+                specifications: {
+                    "Inner Diameter": "20mm",
+                    "Outer Diameter": "47mm",
+                    "Width": "14mm",
+                    "Vacuum Rating": "10⁻⁹ Torr",
+                    "Load Rating": "12.8 kN"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 49,
+                name: "Cryogenic Bearing CGB-210",
+                category: "custom-solutions",
+                price: 5850,
+                image: "[Cryogenic Bearing CGB-210 Image]",
+                description: "Ultra-low temperature bearing for cryogenic applications.",
+                specifications: {
+                    "Inner Diameter": "50mm",
+                    "Outer Diameter": "90mm",
+                    "Width": "20mm",
+                    "Temperature Range": "-196°C to +150°C",
+                    "Load Rating": "35.1 kN"
+                },
+                inStock: true,
+                featured: true
+            },
+            {
+                id: 50,
+                name: "Hybrid Ceramic Bearing HCB-207",
+                category: "custom-solutions",
+                price: 12500,
+                image: "[Hybrid Ceramic Bearing HCB-207 Image]",
+                description: "Premium hybrid bearing with ceramic balls for extreme performance.",
+                specifications: {
+                    "Inner Diameter": "35mm",
+                    "Outer Diameter": "72mm",
+                    "Width": "17mm",
+                    "Ball Material": "Silicon Nitride Ceramic",
+                    "Speed Rating": "40000 rpm"
+                },
+                inStock: true,
+                featured: true
             }
         ];
 
@@ -1626,5 +2352,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'990f8c17d70aea48',t:'MTc2MDg2OTI3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'990fac57e2818a67',t:'MTc2MDg3MDU5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
