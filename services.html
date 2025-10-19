@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - M.L Bearing Solutions | Premium Industrial Bearing Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .feature-icon {
+            transform: scale(1.1);
+            color: #3b82f6;
+        }
+        
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            transform: translateY(-50%);
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .specialty-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .specialty-badge:hover {
+            transform: scale(1.05);
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .cta-button {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-xl">ML</span>
+                        </div>
+                        <div>
+                            <span class="text-xl font-bold text-gray-800">M.L Bearing Solutions</span>
+                            <p class="text-xs text-gray-600">Africa's Premier Bearing Company</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Home</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">About</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Products</a>
+                    <a href="#" class="nav-link text-blue-600 text-sm font-medium border-b-2 border-blue-600">Services</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+254721881995" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                        📞 Call Now
+                    </a>
+                    
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">About</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Products</a>
+                <a href="#" class="block px-3 py-2 text-blue-600 font-medium">Services</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Comprehensive bearing solutions, expert technical support, and nationwide delivery services across all 47 counties in Kenya and East Africa.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#services" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        Explore Services
+                    </a>
+                    <a href="#quote" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section class="bg-white py-16 -mt-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-2xl p-8">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="animate-fade-in">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Premium Products</h3>
+                        <p class="text-gray-600">High-quality bearings from certified global manufacturers</p>
+                    </div>
+                    <div class="animate-fade-in">
+                        <div class="text-4xl mb-4">🔧</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Expert Support</h3>
+                        <p class="text-gray-600">Technical consultation and application guidance</p>
+                    </div>
+                    <div class="animate-fade-in">
+                        <div class="text-4xl mb-4">🚚</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Fast Delivery</h3>
+                        <p class="text-gray-600">Nationwide coverage across all 47 counties</p>
+                    </div>
+                    <div class="animate-fade-in">
+                        <div class="text-4xl mb-4">📋</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Custom Import</h3>
+                        <p class="text-gray-600">Special orders for unique specifications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Complete bearing solutions designed to keep your operations running smoothly and efficiently
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 mb-16">
+                <!-- Ball Bearings Service -->
+                <div class="service-card rounded-2xl p-8 border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="feature-icon text-4xl text-blue-600 mr-4">⚪</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Ball Bearings</h3>
+                            <p class="text-blue-600 font-semibold">Deep Groove & Angular Contact</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        Comprehensive range of ball bearings for various industrial applications, from light-duty machinery to heavy industrial equipment.
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Deep groove ball bearings (6000, 6200, 6300 series)
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Angular contact ball bearings
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Self-aligning ball bearings
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Thrust ball bearings
+                        </div>
+                    </div>
+                    <a href="#quote" class="cta-button text-white px-6 py-3 rounded-lg font-semibold inline-block">
+                        Get Ball Bearing Quote
+                    </a>
+                </div>
+
+                <!-- Roller Bearings Service -->
+                <div class="service-card rounded-2xl p-8 border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="feature-icon text-4xl text-blue-600 mr-4">🔄</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Roller Bearings</h3>
+                            <p class="text-blue-600 font-semibold">Cylindrical, Tapered & Spherical</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        Heavy-duty roller bearings designed for high load applications in mining, construction, and industrial machinery.
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Cylindrical roller bearings (NU, NJ, NUP series)
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Tapered roller bearings (30000, 32000 series)
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Spherical roller bearings (22000, 23000 series)
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Needle roller bearings
+                        </div>
+                    </div>
+                    <a href="#quote" class="cta-button text-white px-6 py-3 rounded-lg font-semibold inline-block">
+                        Get Roller Bearing Quote
+                    </a>
+                </div>
+
+                <!-- Technical Support Service -->
+                <div class="service-card rounded-2xl p-8 border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="feature-icon text-4xl text-blue-600 mr-4">🔧</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Technical Support</h3>
+                            <p class="text-blue-600 font-semibold">Expert Consultation & Guidance</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        Professional technical support to help you select the right bearings, troubleshoot issues, and optimize performance.
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Bearing selection and sizing consultation
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Application analysis and recommendations
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Troubleshooting and failure analysis
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Installation and maintenance guidance
+                        </div>
+                    </div>
+                    <a href="tel:+254721881995" class="cta-button text-white px-6 py-3 rounded-lg font-semibold inline-block">
+                        Call Technical Support
+                    </a>
+                </div>
+
+                <!-- Import Services -->
+                <div class="service-card rounded-2xl p-8 border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="feature-icon text-4xl text-blue-600 mr-4">🌍</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Import Services</h3>
+                            <p class="text-blue-600 font-semibold">Custom Orders & Special Specifications</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        Can't find what you need in stock? We'll import any bearing specification from trusted global manufacturers.
+                    </p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Custom bearing specifications
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Bulk order imports
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Special materials and coatings
+                        </div>
+                        <div class="flex items-center text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            Competitive import pricing
+                        </div>
+                    </div>
+                    <a href="#import-form" class="cta-button text-white px-6 py-3 rounded-lg font-semibold inline-block">
+                        Request Import Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Services -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Specialty Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Additional services to support your specific industry needs and requirements
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="specialty-badge bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
+                    <div class="text-3xl mb-4">⚡</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Emergency Service</h3>
+                    <p class="text-gray-600 text-sm">24/7 emergency bearing supply for critical operations</p>
+                </div>
+                
+                <div class="specialty-badge bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
+                    <div class="text-3xl mb-4">🏭</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Industrial Solutions</h3>
+                    <p class="text-gray-600 text-sm">Specialized bearings for mining, manufacturing, and heavy industry</p>
+                </div>
+                
+                <div class="specialty-badge bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
+                    <div class="text-3xl mb-4">🚛</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Automotive Bearings</h3>
+                    <p class="text-gray-600 text-sm">Wheel bearings, hub assemblies, and automotive applications</p>
+                </div>
+                
+                <div class="specialty-badge bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
+                    <div class="text-3xl mb-4">🔄</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Maintenance Programs</h3>
+                    <p class="text-gray-600 text-sm">Scheduled bearing replacement and maintenance planning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Process -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How We Work</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our streamlined process ensures you get the right bearings quickly and efficiently
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Consultation</h3>
+                    <p class="text-gray-700">Contact us with your bearing requirements. Our experts analyze your needs and recommend the best solutions.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Quotation</h3>
+                    <p class="text-gray-700">Receive detailed quotes with competitive pricing, specifications, and delivery timelines for your approval.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Processing</h3>
+                    <p class="text-gray-700">Order processing begins immediately. We source from stock or initiate import procedures for special orders.</p>
+                </div>
+                
+                <div class="process-step text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Delivery</h3>
+                    <p class="text-gray-700">Fast, secure delivery to your location anywhere in Kenya's 47 counties with tracking and support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Real feedback from satisfied customers across East Africa
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-gray-50 rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">JM</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">John Mwangi</h4>
+                            <p class="text-gray-600 text-sm">Manufacturing Manager</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "M.L Bearing Solutions saved our production line with their emergency service. They delivered the exact bearings we needed within 4 hours!"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-gray-50 rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">AK</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Alice Kiprotich</h4>
+                            <p class="text-gray-600 text-sm">Mining Operations</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "Their technical support team helped us select the perfect bearings for our harsh mining conditions. Excellent expertise and service!"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-gray-50 rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">DO</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">David Omondi</h4>
+                            <p class="text-gray-600 text-sm">Fleet Manager</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">
+                        "Reliable delivery across all our locations in Kenya. M.L Bearing Solutions consistently delivers quality products on time."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Import Request Form -->
+    <section id="import-form" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Request Import Quote</h2>
+                <p class="text-xl text-gray-600">
+                    Need a specific bearing that's not in stock? Fill out this form and we'll import it for you.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <form id="importForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                            <input type="text" id="company" name="company" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="contact" class="block text-sm font-medium text-gray-700 mb-2">Contact Person</label>
+                            <input type="text" id="contact" name="contact" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="bearing-specs" class="block text-sm font-medium text-gray-700 mb-2">Bearing Specifications</label>
+                        <textarea id="bearing-specs" name="bearing-specs" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Please provide detailed bearing specifications (part numbers, dimensions, quantity, application, etc.)"></textarea>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">Quantity Needed</label>
+                            <input type="number" id="quantity" name="quantity" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="timeline" class="block text-sm font-medium text-gray-700 mb-2">Required Timeline</label>
+                            <select id="timeline" name="timeline" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select timeline</option>
+                                <option value="urgent">Urgent (1-2 weeks)</option>
+                                <option value="standard">Standard (3-4 weeks)</option>
+                                <option value="flexible">Flexible (5+ weeks)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="additional-info" class="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
+                        <textarea id="additional-info" name="additional-info" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Any additional requirements, special conditions, or questions"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="cta-button text-white px-8 py-4 rounded-lg font-semibold text-lg">
+                            Submit Import Request
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="form-success" class="hidden text-center py-8">
+                    <div class="text-green-600 text-6xl mb-4">✅</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Request Submitted Successfully!</h3>
+                    <p class="text-gray-600 mb-4">We'll review your import request and get back to you within 24 hours with a detailed quote.</p>
+                    <p class="text-sm text-gray-500">Reference ID: <span id="reference-id" class="font-mono"></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Quote Section -->
+    <section id="quote" class="hero-gradient text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Need a Quick Quote?</h2>
+            <p class="text-xl mb-8">
+                Get instant pricing and availability for standard bearing specifications. Our team responds within 2 hours during business hours.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+254721881995" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center justify-center">
+                    📞 Call +254 721 881995
+                </a>
+                <a href="https://wa.me/254721881995?text=Hi%2C%20I%20need%20a%20quote%20for%20bearings" target="_blank" rel="noopener noreferrer" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300 flex items-center justify-center">
+                    💬 WhatsApp Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">ML</span>
+                        </div>
+                        <div>
+                            <span class="text-lg font-bold">M.L Bearing Solutions</span>
+                            <p class="text-xs text-gray-400">Africa's Premier Bearing Company</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Leading Kenya and East Africa with premium industrial bearings and expert solutions.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Ball Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Roller Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Technical Support</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Import Services</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Emergency Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Industries</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Manufacturing</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Mining</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Construction</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Automotive</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Agriculture</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📍 Nairobi, Kenya</li>
+                        <li>📞 +254 721 881995</li>
+                        <li>💬 WhatsApp Available</li>
+                        <li>🚚 All 47 Counties</li>
+                        <li>⏰ 24/7 Emergency Support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 M.L Bearing Solutions. All rights reserved. | Africa's Premier Bearing Company</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Import form submission
+        document.getElementById('importForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Generate reference ID
+            const referenceId = 'IMP-' + Date.now().toString().slice(-6);
+            
+            // Show success message
+            document.getElementById('importForm').style.display = 'none';
+            document.getElementById('form-success').classList.remove('hidden');
+            document.getElementById('reference-id').textContent = referenceId;
+            
+            // Scroll to success message
+            document.getElementById('form-success').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and other elements
+        document.querySelectorAll('.service-card, .specialty-badge, .testimonial-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'990fcf46a0edea48',t:'MTc2MDg3MjAyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
