@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - M.L Bearing Solutions | Africa's Premier Bearing Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+        }
+        
+        .stats-counter {
+            animation: countUp 2s ease-out;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            width: 16px;
+            height: 16px;
+            background: #3b82f6;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #e5e7eb;
+        }
+        
+        .value-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+        }
+        
+        .value-card:hover .value-icon {
+            color: white;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .certification-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .certification-badge:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-xl">ML</span>
+                        </div>
+                        <div>
+                            <span class="text-xl font-bold text-gray-800">M.L Bearing Solutions</span>
+                            <p class="text-xs text-gray-600">Africa's Premier Bearing Company</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Home</a>
+                    <a href="#" class="nav-link text-blue-600 text-sm font-medium border-b-2 border-blue-600">About</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Products</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Services</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 text-sm font-medium">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+254721881995" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                        📞 Call Now
+                    </a>
+                    
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#" class="block px-3 py-2 text-blue-600 font-medium">About</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Products</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Services</a>
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">About M.L Bearing Solutions</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Leading Kenya and East Africa with premium industrial bearings, expert solutions, and unmatched customer service since our founding.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#story" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        Our Story
+                    </a>
+                    <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-white py-16 -mt-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-2xl p-8">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div class="stats-counter">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">15+</div>
+                        <div class="text-gray-600 font-medium">Years Experience</div>
+                    </div>
+                    <div class="stats-counter">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">10,000+</div>
+                        <div class="text-gray-600 font-medium">Happy Customers</div>
+                    </div>
+                    <div class="stats-counter">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">47</div>
+                        <div class="text-gray-600 font-medium">Counties Served</div>
+                    </div>
+                    <div class="stats-counter">
+                        <div class="text-4xl font-bold text-blue-600 mb-2">24/7</div>
+                        <div class="text-gray-600 font-medium">Customer Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+                    <div class="space-y-6 text-gray-700 text-lg">
+                        <p>
+                            Founded with a vision to revolutionize the bearing industry in East Africa, M.L Bearing Solutions has grown from a small local supplier to the region's most trusted bearing company.
+                        </p>
+                        <p>
+                            Our journey began when our founder recognized the critical need for high-quality, reliable bearings in Kenya's rapidly growing industrial sector. What started as a mission to serve local manufacturers has expanded into a comprehensive solution provider serving all 47 counties.
+                        </p>
+                        <p>
+                            Today, we're proud to be Africa's premier bearing company, combining international quality standards with local expertise and personalized service that our customers have come to depend on.
+                        </p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#timeline" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition duration-300">
+                            View Our Timeline
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-blue-600 rounded-2xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Our Mission</h3>
+                        <p class="text-lg mb-6">
+                            To provide East Africa with world-class bearing solutions, exceptional customer service, and technical expertise that keeps industries moving forward.
+                        </p>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Core Focus Areas:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Premium Quality Products</li>
+                                <li>• Expert Technical Support</li>
+                                <li>• Nationwide Delivery Network</li>
+                                <li>• Custom Import Solutions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Journey</h2>
+                <p class="text-xl text-gray-600">Key milestones in our growth as East Africa's leading bearing company</p>
+            </div>
+            
+            <div class="space-y-12">
+                <div class="timeline-item pl-16 relative">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">2008</span>
+                            <h3 class="text-xl font-bold text-gray-900 ml-4">Company Founded</h3>
+                        </div>
+                        <p class="text-gray-700">M.L Bearing Solutions established in Nairobi with a focus on serving local manufacturing industries with quality bearing solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item pl-16 relative">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">2012</span>
+                            <h3 class="text-xl font-bold text-gray-900 ml-4">Regional Expansion</h3>
+                        </div>
+                        <p class="text-gray-700">Extended operations to serve customers across Kenya, establishing partnerships with major industrial manufacturers and mining companies.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item pl-16 relative">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">2016</span>
+                            <h3 class="text-xl font-bold text-gray-900 ml-4">Import Services Launch</h3>
+                        </div>
+                        <p class="text-gray-700">Launched specialized import-on-request services, enabling customers to access any bearing specification from global manufacturers.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item pl-16 relative">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">2019</span>
+                            <h3 class="text-xl font-bold text-gray-900 ml-4">East Africa Coverage</h3>
+                        </div>
+                        <p class="text-gray-700">Achieved complete coverage of all 47 Kenyan counties and expanded services to Uganda, Tanzania, and Rwanda.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item pl-16 relative">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">2024</span>
+                            <h3 class="text-xl font-bold text-blue-600 ml-4">Digital Innovation</h3>
+                        </div>
+                        <p class="text-gray-700">Launched comprehensive digital platform and 24/7 customer support, becoming Africa's most accessible bearing solutions provider.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    The principles that guide everything we do and define who we are as a company
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="value-card rounded-xl p-8 text-center">
+                    <div class="value-icon text-4xl text-blue-600 mb-4">🎯</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Quality Excellence</h3>
+                    <p class="text-gray-700">We source only the highest quality bearings from certified manufacturers, ensuring reliability and performance in every product.</p>
+                </div>
+                
+                <div class="value-card rounded-xl p-8 text-center">
+                    <div class="value-icon text-4xl text-blue-600 mb-4">🤝</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Customer First</h3>
+                    <p class="text-gray-700">Our customers' success is our success. We provide personalized service, expert advice, and solutions tailored to each unique need.</p>
+                </div>
+                
+                <div class="value-card rounded-xl p-8 text-center">
+                    <div class="value-icon text-4xl text-blue-600 mb-4">⚡</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Speed & Reliability</h3>
+                    <p class="text-gray-700">Fast delivery, quick response times, and dependable service that keeps your operations running without interruption.</p>
+                </div>
+                
+                <div class="value-card rounded-xl p-8 text-center">
+                    <div class="value-icon text-4xl text-blue-600 mb-4">🔧</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Technical Expertise</h3>
+                    <p class="text-gray-700">Deep industry knowledge and technical support to help you select the right bearings for optimal performance and longevity.</p>
+                </div>
+                
+                <div class="value-card rounded-xl p-8 text-center">
+                    <div class="value-icon text-4xl text-blue-600 mb-4">🌍</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Local Understanding</h3>
+                    <p class="text-gray-700">We understand the unique challenges of African industries and provide solutions that work in our local conditions.</p>
+                </div>
+                
+                <div class="value-card rounded-xl p-8 text-center">
+                    <div class="value-icon text-4xl text-blue-600 mb-4">💡</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Innovation</h3>
+                    <p class="text-gray-700">Continuously improving our services, embracing new technologies, and finding better ways to serve our customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    The experienced professionals behind M.L Bearing Solutions' success
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="team-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-blue-600">ML</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Michael Langat</h3>
+                        <p class="text-blue-600 font-semibold mb-3">Founder & CEO</p>
+                        <p class="text-gray-700 text-sm">
+                            Visionary leader with 20+ years in industrial solutions. Passionate about bringing world-class bearing technology to East Africa.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-green-600">SK</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Sarah Kimani</h3>
+                        <p class="text-blue-600 font-semibold mb-3">Technical Director</p>
+                        <p class="text-gray-700 text-sm">
+                            Mechanical engineer specializing in bearing applications. Leads our technical support and product selection services.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-64 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center">
+                            <span class="text-2xl font-bold text-purple-600">DO</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">David Ochieng</h3>
+                        <p class="text-blue-600 font-semibold mb-3">Operations Manager</p>
+                        <p class="text-gray-700 text-sm">
+                            Ensures seamless operations and delivery across all 47 counties. Expert in logistics and supply chain management.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Quality Certifications</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our commitment to quality is backed by international certifications and standards
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="certification-badge bg-white rounded-xl p-8 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 font-bold text-lg">ISO</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">ISO 9001:2015</h3>
+                    <p class="text-gray-600 text-sm">Quality Management Systems</p>
+                </div>
+                
+                <div class="certification-badge bg-white rounded-xl p-8 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-green-600 font-bold text-lg">ABEC</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">ABEC Standards</h3>
+                    <p class="text-gray-600 text-sm">Precision Bearing Tolerances</p>
+                </div>
+                
+                <div class="certification-badge bg-white rounded-xl p-8 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-600 font-bold text-lg">DIN</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">DIN Standards</h3>
+                    <p class="text-gray-600 text-sm">German Industrial Standards</p>
+                </div>
+                
+                <div class="certification-badge bg-white rounded-xl p-8 text-center shadow-lg">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-red-600 font-bold text-lg">KEBS</span>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">KEBS Certified</h3>
+                    <p class="text-gray-600 text-sm">Kenya Bureau of Standards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="hero-gradient text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Experience the M.L Difference?</h2>
+            <p class="text-xl mb-8">
+                Join thousands of satisfied customers across East Africa who trust M.L Bearing Solutions for their industrial needs.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+254721881995" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center justify-center">
+                    📞 Call +254 721 881995
+                </a>
+                <a href="https://wa.me/254721881995" target="_blank" rel="noopener noreferrer" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300 flex items-center justify-center">
+                    💬 WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <span class="text-white font-bold">ML</span>
+                        </div>
+                        <div>
+                            <span class="text-lg font-bold">M.L Bearing Solutions</span>
+                            <p class="text-xs text-gray-400">Africa's Premier Bearing Company</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Leading Kenya and East Africa with premium industrial bearings and expert solutions.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Products</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Import Request</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition duration-300">Ball Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Roller Bearings</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Technical Support</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Custom Solutions</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">Emergency Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📍 Nairobi, Kenya</li>
+                        <li>📞 +254 721 881995</li>
+                        <li>💬 WhatsApp Available</li>
+                        <li>🚚 All 47 Counties</li>
+                        <li>⏰ 24/7 Emergency Support</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 M.L Bearing Solutions. All rights reserved. | Africa's Premier Bearing Company</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('stats-counter');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stats-counter').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'990fc3e30155ea48',t:'MTc2MDg3MTU1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+Perfect! I've recreated the comprehensive About Us page for M.L Bearing Solutions. Here's what's included:
+
+**Key Sections:**
+- **Hero Section** - Compelling introduction with clear value proposition
+- **Company Stats** - 15+ years, 10,000+ customers, 47 counties, 24/7 support
+- **Our Story** - Company narrative and mission statement
+- **Timeline** - Visual journey from 2008 to 2024 with key milestones
+- **Core Values** - Six key principles with interactive hover effects
+- **Team Section** - Leadership profiles (Michael Langat, Sarah Kimani, David Ochieng)
+- **Certifications** - Quality standards (ISO, ABEC, DIN, KEBS)
+- **Call-to-Action** - Contact options and next steps
+
+**Professional Features:**
+- Mobile-responsive design
+- Smooth animations and transitions
+- Professional blue color scheme
+- Interactive elements with hover effects
+- Clean typography and spacing
+- Trust-building elements
+
+Save this as **`about.html`**. 
+
+What business page would you like me to create next? Options include:
+- Services page
+- Contact page
+- Import request page
+- Careers page
